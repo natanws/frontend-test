@@ -1,0 +1,16 @@
+<div class="cardsContainer">
+    <button (click)="random()">Suggest me a random place!</button>
+
+    <app-card *ngFor="let brewery of randomBrewery" [brewery]="brewery"></app-card>
+
+    <hr *ngIf="Random">
+    <div class="cards">
+
+        <app-card *ngFor="let brewery of breweries | paginate: {
+        itemsPerPage: 8,
+        currentPage: page,
+        totalItems: totalBreweries
+    }" [brewery]="brewery"></app-card>
+    </div>
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
